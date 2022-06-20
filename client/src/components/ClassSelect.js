@@ -1,18 +1,22 @@
 import React from 'react'
+import {useNavigate} from "react-router-dom";
 
 function ClassSelect() {
+    const navigate = useNavigate();
+
     const classSelected = name => {
         window.localStorage.setItem("class", name);
+        navigate("/home")
     }
 
     return (
-        <div>
-            <h1 className="text-xl text-bold w-fit mx-auto pt-20">Select a class</h1>
-            <div className="mt-8 w-7/12 mx-auto h-fit">
-                <div className="w-full text-xl uppercase bg-slate-100 border-slate-300 shadow-lg hover:shadow-inner text-center flex flex-col justify-center h-12" onClick={() => {classSelected("SENG 310")}}>SENG 310</div>
-                <div className="mt-5 w-full text-xl uppercase bg-slate-100 border-slate-300 shadow-lg hover:shadow-inner text-center flex flex-col justify-center h-12" onClick={() => {classSelected("CSC 482A")}}>CSC 482A</div>
-                <div className="mt-5 w-full text-xl uppercase bg-slate-100 border-slate-300 shadow-lg hover:shadow-inner text-center flex flex-col justify-center h-12" onClick={() => {classSelected("CSC 485C")}}>CSC 485C</div>
-                <div className="mt-5 w-full text-xl uppercase bg-slate-100 border-slate-300 shadow-lg hover:shadow-inner text-center flex flex-col justify-center h-12" onClick={() => {classSelected("CSC 445")}}>CSC 445</div>
+        <div className="bg-slate-200 w-screen min-h-screen">
+            <h1 className="text-xl text-bold w-fit mx-auto pt-[35%]">Select a class</h1>
+            <div className="mt-12 w-9/12 mx-auto h-fit">
+                <div className="w-full text-xl uppercase bg-white border-slate-400 shadow-lg hover:shadow-inner text-center flex flex-col justify-center h-12" onClick={() => {classSelected("SENG 310")}}>SENG 310</div>
+                <div className="mt-5 w-full text-xl uppercase bg-white border-slate-400 shadow-lg hover:shadow-inner text-center flex flex-col justify-center h-12" onClick={() => {classSelected("CSC 482A")}}>CSC 482A</div>
+                <div className="mt-5 w-full text-xl uppercase bg-white border-slate-400 shadow-lg hover:shadow-inner text-center flex flex-col justify-center h-12" onClick={() => {classSelected("CSC 485C")}}>CSC 485C</div>
+                <div className="mt-5 w-full text-xl uppercase bg-white border-slate-400 shadow-lg hover:shadow-inner text-center flex flex-col justify-center h-12" onClick={() => {classSelected("CSC 445")}}>CSC 445</div>
             </div>
         </div>
     )
