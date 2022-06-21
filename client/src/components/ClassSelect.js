@@ -6,8 +6,12 @@ function ClassSelect() {
 
     useEffect(() => {
         const login = window.localStorage.getItem("FRlogin");
-        if (!login) {
+        if (login === "false") {
             navigate("/login");
+        }
+        const role = window.localStorage.getItem("FRrole");
+        if (role === "student") {
+            navigate("/home");
         }
     })
 

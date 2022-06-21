@@ -16,7 +16,7 @@ function RecentClassDetail() {
 
     useEffect(() => {
         const login = window.localStorage.getItem("FRlogin");
-        if (!login) {
+        if (login === "false") {
             navigate("/login");
         }
     })

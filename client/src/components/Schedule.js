@@ -9,11 +9,13 @@ function Schedule() {
     const [month, setMonth] = useState([]);
     const [showDateDetail, setShowDateDetail] = useState(false);
     const [dateSelected, setDateSelected] = useState(14);
+    const [role, setRole] = useState(window.localStorage.getItem("FRrole"));
+    const [after, setAfter] = useState(false);
     const navigate = useNavigate();
 
     useEffect(() => {
         const login = window.localStorage.getItem("FRlogin");
-        if (!login) {
+        if (login === "false") {
             navigate("/login");
         }
     })
@@ -36,6 +38,22 @@ function Schedule() {
         setShowDateDetail(true);
     }
 
+    const onDateClickedStudent = date => {
+        setDateSelected(date);
+        setShowDateDetail(true);
+        if (monthIndex < 5) {
+            setAfter(false);
+        } else if (monthIndex > 5) {
+            setAfter(true);
+        } else {
+            if (date >= 20) {
+                setAfter(true)
+            } else {
+                setAfter(false)
+            }
+        }
+    }
+
     const onClassClicked = className => {
         window.localStorage.setItem("class", className);
         window.localStorage.setItem("PRclassdate", `${dateSelected % 7 === 6 ? "Mon" : "Thu"} ${dateSelected} ${month[0]}, 2022`)
@@ -56,39 +74,77 @@ function Schedule() {
         }
     }
 
-  return (
-    <div className="bg-slate-200 w-screen min-h-screen pb-20">
-        <UpperNav className="Schedule"/>
-        <div className="pt-20 w-full">
-            <div className="flex flex-row bg-white border border-slate-300 shadow-md shadow-slate-300 h-fit">
-                <div className="w-2/12 font-semibold text-black bg-slate-200 hover:bg-slate-300 text-2xl text-center py-3" onClick={moveLeft}>&#60;</div>
-                <div className="w-8/12 font-semibold text-black text-2xl text-center py-3">{month[0]} 2022</div>
-                <div className="w-2/12 font-semibold text-black bg-slate-200 hover:bg-slate-300 text-2xl text-center py-3" onClick={moveRight}>&#62;</div>
+    if (role !== "teacher") {
+        return (
+            <div className="bg-slate-200 w-screen min-h-screen pb-20">
+                <UpperNav className="Schedule"/>
+                <div className="pt-20 w-full">
+                    <div className="flex flex-row bg-white border border-slate-300 shadow-md shadow-slate-300 h-fit">
+                        <div className="w-2/12 font-semibold text-black bg-slate-200 hover:bg-slate-300 text-2xl text-center py-3" onClick={moveLeft}>&#60;</div>
+                        <div className="w-8/12 font-semibold text-black text-2xl text-center py-3">{month[0]} 2022</div>
+                        <div className="w-2/12 font-semibold text-black bg-slate-200 hover:bg-slate-300 text-2xl text-center py-3" onClick={moveRight}>&#62;</div>
+                    </div>
+                    <p className="text-md italic mt-4 w-10/12 mx-auto">Underlined and bold dates are ones when you have one or more classes</p>
+                    <div className="mt-2 w-full flex flex-row flex-wrap justify-center">
+                        {Array(month[1]).fill(0).map((x, index) => (
+                            (index + 1) % 7 === 6 || (index + 1) % 7 === 2 ? (<div key={index + 1} className="w-1/6 mr-1 mt-1 py-4 text-center bg-white hover:bg-slate-200 text-lg font-bold underline rounded-sm" onClick={() => {onDateClickedStudent(index + 1)}}>{index + 1}</div>) : (<div key={index + 1} className="w-1/6 mr-1 mt-1 py-4 text-center bg-white hover:bg-slate-200 text-lg font-semilight rounded-sm" onClick={() => {onDateClicked(index + 1)}}>{index + 1}</div>)
+                        ))}
+                    </div>
+                </div>
+                {showDateDetail ? (<div className="absolute top-0 left-0 bg-black opacity-50 z-20 w-screen h-screen"></div>) : (<div></div>)}
+                {showDateDetail ? (<div className="absolute top-36 left-0 right-0 mx-auto bg-slate-100 w-10/12 z-30 rounded-md h-fit">
+                    <p className="pt-3 ml-4 text-xl"><span className="font-semibold">Date:</span> {dateSelected} {month[0]}, 2022</p>
+                    <p className="mt-2 ml-4 text-xl"><span className="font-semibold">Classes:</span></p>
+                    {(dateSelected % 7 === 6 || dateSelected % 7 === 2) && !after ? (<p className="text-md font-light italic ml-4 text-base">(Green means "attended", Red means "absent", Yellow means "excused")</p>) : (<div></div>)}
+                    {dateSelected % 7 === 6 || dateSelected % 7 === 2 ? (
+                    <div className="mt-2 w-11/12 mx-auto h-fit mb-4">
+                        <div className={`w-full text-center rounded-md bg-white flex flex-col justify-center text-lg border border-slate-200 shadow-slate-300 shadow-md py-2 ${!after ? "bg-green-200" : ""}`}>SENG 310 lecture</div>
+                        <div className={`mt-2 w-full text-center rounded-md bg-white flex flex-col justify-center text-lg border border-slate-200 shadow-slate-300 shadow-md py-2 ${!after ? "bg-green-200" : ""}`}>CSC 482A lecture</div>
+                        <div className={`mt-2 w-full text-center rounded-md bg-white flex flex-col justify-center text-lg border border-slate-200 shadow-slate-300 shadow-md py-2 ${!after ? "bg-yellow-200" : ""}`}>CSC 485C lecture</div>
+                        <div className={`mt-2 w-full text-center rounded-md bg-white flex flex-col justify-center text-lg border border-slate-200 shadow-slate-300 shadow-md py-2 ${!after ? "bg-red-200" : ""}`}>CSC 445 lecture</div>
+                    </div>
+                    ) : (<div className="mt-2 w-11/12 mx-auto h-fit mb-4 text-center">No class for this date</div>)}
+                    <div className="px-6 py-1 text-lg rounded-md bg-white border border-slate-200 shadow-slate-300 shadow-md hover:shadow-inner w-fit h-fit mb-4 ml-auto mr-4" onClick={() => {setShowDateDetail(false)}}>Close</div>
+                </div>) : (<div></div>)}
+                
+                <LowerNav selected="schedule"/>
             </div>
-            <p className="text-md italic mt-4 w-10/12 mx-auto">Underlined and bold dates are ones when you have one or more classes</p>
-            <div className="mt-2 w-full flex flex-row flex-wrap justify-center">
-                {Array(month[1]).fill(0).map((x, index) => (
-                    (index + 1) % 7 === 6 || (index + 1) % 7 === 2 ? (<div key={index + 1} className="w-1/6 mr-1 mt-1 py-4 text-center bg-white hover:bg-slate-200 text-lg font-bold underline rounded-sm" onClick={() => {onDateClicked(index + 1)}}>{index + 1}</div>) : (<div key={index + 1} className="w-1/6 mr-1 mt-1 py-4 text-center bg-white hover:bg-slate-200 text-lg font-semilight rounded-sm" onClick={() => {onDateClicked(index + 1)}}>{index + 1}</div>)
-                ))}
+        )
+    } else {
+        return (
+            <div className="bg-slate-200 w-screen min-h-screen pb-20">
+                <UpperNav className="Schedule"/>
+                <div className="pt-20 w-full">
+                    <div className="flex flex-row bg-white border border-slate-300 shadow-md shadow-slate-300 h-fit">
+                        <div className="w-2/12 font-semibold text-black bg-slate-200 hover:bg-slate-300 text-2xl text-center py-3" onClick={moveLeft}>&#60;</div>
+                        <div className="w-8/12 font-semibold text-black text-2xl text-center py-3">{month[0]} 2022</div>
+                        <div className="w-2/12 font-semibold text-black bg-slate-200 hover:bg-slate-300 text-2xl text-center py-3" onClick={moveRight}>&#62;</div>
+                    </div>
+                    <p className="text-md italic mt-4 w-10/12 mx-auto">Underlined and bold dates are ones when you have one or more classes</p>
+                    <div className="mt-2 w-full flex flex-row flex-wrap justify-center">
+                        {Array(month[1]).fill(0).map((x, index) => (
+                            (index + 1) % 7 === 6 || (index + 1) % 7 === 2 ? (<div key={index + 1} className="w-1/6 mr-1 mt-1 py-4 text-center bg-white hover:bg-slate-200 text-lg font-bold underline rounded-sm" onClick={() => {onDateClicked(index + 1)}}>{index + 1}</div>) : (<div key={index + 1} className="w-1/6 mr-1 mt-1 py-4 text-center bg-white hover:bg-slate-200 text-lg font-semilight rounded-sm" onClick={() => {onDateClicked(index + 1)}}>{index + 1}</div>)
+                        ))}
+                    </div>
+                </div>
+                {showDateDetail ? (<div className="absolute top-0 left-0 bg-black opacity-50 z-20 w-screen h-screen"></div>) : (<div></div>)}
+                {showDateDetail ? (<div className="absolute top-48 left-0 right-0 mx-auto bg-slate-100 w-10/12 z-30 rounded-md h-fit">
+                    <p className="pt-3 ml-4 text-xl"><span className="font-semibold">Date:</span> {dateSelected} {month[0]}, 2022</p>
+                    <p className="mt-2 ml-4 text-xl"><span className="font-semibold">Classes:</span></p>
+                    {dateSelected % 7 === 6 || dateSelected % 7 === 2 ? (<p className="text-md font-light italic ml-4 text-base">(Click on a class container for details)</p>) : (<div></div>)}
+                    {dateSelected % 7 === 6 || dateSelected % 7 === 2 ? (<div className="mt-2 w-11/12 mx-auto h-fit mb-4">
+                        <div className="w-full text-center rounded-md bg-white flex flex-col justify-center text-lg border border-slate-200 shadow-slate-300 shadow-md py-2 hover:shadow-inner" onClick={() => {onClassClicked("SENG 310")}}>SENG 310 lecture</div>
+                        <div className="mt-2 w-full text-center rounded-md bg-white flex flex-col justify-center text-lg border border-slate-200 shadow-slate-300 shadow-md py-2 hover:shadow-inner" onClick={() => {onClassClicked("CSC 482A")}}>CSC 482A lecture</div>
+                        <div className="mt-2 w-full text-center rounded-md bg-white flex flex-col justify-center text-lg border border-slate-200 shadow-slate-300 shadow-md py-2 hover:shadow-inner" onClick={() => {onClassClicked("CSC 485C")}}>CSC 485C lecture</div>
+                        <div className="mt-2 w-full text-center rounded-md bg-white flex flex-col justify-center text-lg border border-slate-200 shadow-slate-300 shadow-md py-2 hover:shadow-inner" onClick={() => {onClassClicked("CSC 445")}}>CSC 445 lecture</div>
+                    </div>) : (<div className="mt-2 w-11/12 mx-auto h-fit mb-4 text-center">No class for this date</div>)}
+                    <div className="px-6 py-1 text-lg rounded-md bg-white border border-slate-200 shadow-slate-300 shadow-md hover:shadow-inner w-fit h-fit mb-4 ml-auto mr-4" onClick={() => {setShowDateDetail(false)}}>Close</div>
+                </div>) : (<div></div>)}
+                
+                <LowerNav selected="schedule"/>
             </div>
-        </div>
-        {showDateDetail ? (<div className="absolute top-0 left-0 bg-black opacity-50 z-20 w-screen h-screen"></div>) : (<div></div>)}
-        {showDateDetail ? (<div className="absolute top-48 left-0 right-0 mx-auto bg-slate-100 w-10/12 z-30 rounded-md h-fit">
-            <p className="pt-3 ml-4 text-xl"><span className="font-semibold">Date:</span> {dateSelected} {month[0]}, 2022</p>
-            <p className="mt-2 ml-4 text-xl"><span className="font-semibold">Classes:</span></p>
-            {dateSelected % 7 === 6 || dateSelected % 7 === 2 ? (<p className="text-md font-light italic ml-4 text-base">(Click on a class container for details)</p>) : (<div></div>)}
-            {dateSelected % 7 === 6 || dateSelected % 7 === 2 ? (<div className="mt-2 w-11/12 mx-auto h-fit mb-4">
-                <div className="w-full text-center rounded-md bg-white flex flex-col justify-center text-lg border border-slate-200 shadow-slate-300 shadow-md py-2 hover:shadow-inner" onClick={() => {onClassClicked("SENG 310")}}>SENG 310 lecture</div>
-                <div className="mt-2 w-full text-center rounded-md bg-white flex flex-col justify-center text-lg border border-slate-200 shadow-slate-300 shadow-md py-2 hover:shadow-inner" onClick={() => {onClassClicked("CSC 482A")}}>CSC 482A lecture</div>
-                <div className="mt-2 w-full text-center rounded-md bg-white flex flex-col justify-center text-lg border border-slate-200 shadow-slate-300 shadow-md py-2 hover:shadow-inner" onClick={() => {onClassClicked("CSC 485C")}}>CSC 485C lecture</div>
-                <div className="mt-2 w-full text-center rounded-md bg-white flex flex-col justify-center text-lg border border-slate-200 shadow-slate-300 shadow-md py-2 hover:shadow-inner" onClick={() => {onClassClicked("CSC 445")}}>CSC 445 lecture</div>
-            </div>) : (<div className="mt-2 w-11/12 mx-auto h-fit mb-4 text-center">No class for this date</div>)}
-            <div className="px-6 py-1 text-lg rounded-md bg-white border border-slate-200 shadow-slate-300 shadow-md hover:shadow-inner w-fit h-fit mb-4 ml-auto mr-4" onClick={() => {setShowDateDetail(false)}}>Close</div>
-        </div>) : (<div></div>)}
-        
-        <LowerNav selected="schedule"/>
-    </div>
-  )
+        )
+    }
 }
 
 export default Schedule

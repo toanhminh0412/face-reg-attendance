@@ -13,6 +13,7 @@ import UpcomingClassDetail from './components/UpcomingClassDetail';
 import RecentClassDetail from './components/RecentClassDetail';
 import RequestDetail from './components/RequestDetail';
 import Schedule from './components/Schedule';
+import Progress from './components/Progress';
 
 function App() {
   return (
@@ -26,6 +27,7 @@ function App() {
         <Route exact path="/schedule" element={<Schedule/>}/>
         <Route exact path="/schedule/upcoming-class" element={<UpcomingClassDetail></UpcomingClassDetail>}/>
         <Route exact path="/schedule/recent-class" element={<RecentClassDetail></RecentClassDetail>}/>
+        <Route exact path="/progress" element={<Progress/>}/>
       </Routes>
     </Router>
   );
