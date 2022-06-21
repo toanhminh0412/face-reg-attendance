@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import UpperNav from './UpperNav';
 import LowerNav from './LowerNav';
 import {useNavigate} from "react-router-dom";
@@ -52,6 +52,13 @@ function Request() {
   }])
   const [message, setMessage] = useState("") 
   const navigate = useNavigate();
+
+  useEffect(() => {
+    const login = window.localStorage.getItem("FRlogin");
+    if (!login) {
+        navigate("/login");
+    }
+})
 
   const acceptRequest = async(id) => {
     let newRequests = []

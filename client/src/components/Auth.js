@@ -18,7 +18,7 @@ function Auth() {
     
     const logIn = async (e) => {
         e.preventDefault()
-        await axios.get("http://localhost:3001/user-auth", {params: {username: username, password: password}})
+        /*await axios.get("http://localhost:3001/user-auth", {params: {username: username, password: password}})
         .then(res => {
             const userId = res.data.userId;
             if (userId >= 1) {
@@ -31,7 +31,16 @@ function Auth() {
         })
         .catch(error => {
             console.log(error);
-        })
+        })*/
+        if (username === "teacher@gmail.com" && password === "teachingisfun") {
+            window.localStorage.setItem("FRlogin", true);
+            window.localStorage.setItem("FRrole", "teacher");
+        } else if (username === "student@gmail.com" && password === "studyingisfun") {
+            window.localStorage.setItem("FRlogin", true);
+            window.localStorage.setItem("FRrole", "student");
+        } else {
+            setError("Incorrect username or password")
+        }
     }
 
     return (

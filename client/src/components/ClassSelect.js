@@ -1,8 +1,15 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import {useNavigate} from "react-router-dom";
 
 function ClassSelect() {
     const navigate = useNavigate();
+
+    useEffect(() => {
+        const login = window.localStorage.getItem("FRlogin");
+        if (!login) {
+            navigate("/login");
+        }
+    })
 
     const classSelected = name => {
         window.localStorage.setItem("class", name);

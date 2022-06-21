@@ -1,9 +1,18 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 import UpperNav from './UpperNav'
 import LowerNav from './LowerNav'
+import {useNavigate} from "react-router-dom"
 
 function RequestDetail() {
     const [request, setRequest] = useState(JSON.parse(window.localStorage.getItem("PRrequest")));
+    const navigate = useNavigate();
+
+    useEffect(() => {
+        const login = window.localStorage.getItem("FRlogin");
+        if (!login) {
+            navigate("/login");
+        }
+    })
 
     return (
         <div className="bg-slate-200 w-screen min-h-screen pb-20">

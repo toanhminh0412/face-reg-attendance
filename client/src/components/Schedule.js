@@ -12,6 +12,13 @@ function Schedule() {
     const navigate = useNavigate();
 
     useEffect(() => {
+        const login = window.localStorage.getItem("FRlogin");
+        if (!login) {
+            navigate("/login");
+        }
+    })
+
+    useEffect(() => {
         setMonth(months[monthIndex]);
     }, [monthIndex])
 

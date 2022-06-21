@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import LowerNav from './LowerNav';
 import UpperNav from './UpperNav';
 import {BsFillPenFill} from "react-icons/bs";
+import {useNavigate} from "react-router-dom";
 
 function UpcomingClassDetail() {
     const [className, setClassName] = useState(window.localStorage.getItem("class"));
@@ -9,6 +10,14 @@ function UpcomingClassDetail() {
     const [attendingNum, setAttendingNum] = useState(window.localStorage.getItem("PRattendingnum")); 
     const [attendees, setAtendess] = useState(["Minh To","Aden Bernadi","Big Boy","Carley Winston","Chuck Chick","Emma Stone","Justin Bieber","Post Malone","Lionel Messi","Chirstiano Ronaldo","Edison Cavani","Arianna Grande","Demi Lovato","Pink","Chris Evan","Chris Hemsworth","Natasha Reinhart","Chris Rock","Will SMith","Janden Smith","Emma Watson","Jennifer Lopec","Jennifer Aniston","Bruce Lee","Jackie Chan","Amanda Castilo","Zevin Wang","Charlie Stone","Andrew Li","Boteng Jerome"]);
     const [excuseds, setExcuseds] = useState(["Hao-tse Wu","Aida Guang","Aden Shuttle"]);
+    const navigate = useNavigate();
+
+    useEffect(() => {
+        const login = window.localStorage.getItem("FRlogin");
+        if (!login) {
+            navigate("/login");
+        }
+    })
 
     useEffect(() => {
         console.log("Excuseds: " + excuseds.length);

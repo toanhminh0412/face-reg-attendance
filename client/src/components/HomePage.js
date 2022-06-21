@@ -10,6 +10,10 @@ function HomePage() {
     
     useEffect(() => {
         setClassName(window.localStorage.getItem("class"));
+        const login = window.localStorage.getItem("FRlogin");
+        if (!login) {
+            navigate("/login");
+        }
         
         /*
         const userId = window.localStorage.getItem("PRuserId");

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import LowerNav from './LowerNav';
 import UpperNav from './UpperNav';
 import {BsFillPenFill} from "react-icons/bs";
+import {useNavigate} from "react-router-dom";
 
 function RecentClassDetail() {
     const [className, setClassName] = useState(window.localStorage.getItem("class"));
@@ -11,6 +12,14 @@ function RecentClassDetail() {
     const [excuseds, setExcuseds] = useState(["Hao-tse Wu","Aida Guang","Aden Shuttle"]);
     const [absents, setAbsents] = useState(["Thor", "Iron Man", "Captain America", "Black Widow", "Hulk", "Thanos", "Captain Marvel", "Nick Fury", "Gamora", "I am Groot", "Dr Strange", "Spider Man", "Hawkeye", "Scarlet Witch", "Vision", "Quick SIlver"]);
     const [viewOption, setViewOption] = useState("allstudents");
+    const navigate = useNavigate();
+
+    useEffect(() => {
+        const login = window.localStorage.getItem("FRlogin");
+        if (!login) {
+            navigate("/login");
+        }
+    })
 
     useEffect(() => {
         console.log("Excuseds: " + excuseds.length);
