@@ -35,9 +35,11 @@ function Auth() {
         if (username === "teacher@gmail.com" && password === "teachingisfun") {
             window.localStorage.setItem("FRlogin", true);
             window.localStorage.setItem("FRrole", "teacher");
+            navigate("/")
         } else if (username === "student@gmail.com" && password === "studyingisfun") {
             window.localStorage.setItem("FRlogin", true);
             window.localStorage.setItem("FRrole", "student");
+            navigate("/")
         } else {
             setError("Incorrect username or password")
         }
