@@ -1,0 +1,94 @@
+[
+    {
+        "userId": 1,
+        "role": "teacher",
+        "classes": {
+            "SENG 310": {
+                "students": [
+                    "Minh To", "Hao-tse Wu", "Andrew Li", "Zevin Wang", "Aden Shuttle", "Aida Guang", "Aden Bernadi", "Boteng Jerome", "Big Boy", "Charlie Stone", "Carley Winston", "Chuck Chick", "Emma Stone", "Justin Bieber", "Post Malone", "Lionel Messi", "Chirstiano Ronaldo", "Edison Cavani", "Arianna Grande", "Demi Lovato", "Pink", "Chris Evan", "Chris Hemsworth", "Natasha Reinhart", "Chris Rock", "Will SMith", "Janden Smith", "Emma Watson", "Jennifer Lopec", "Jennifer Aniston", "Bruce Lee", "Jackie Chan", "Amanda Castilo"
+                ], 
+                "lectures": [
+                    {
+                        "name": "SENG 310 lecture",
+                        "date": "Mon Jun 20, 2022",
+                        "type": "upcoming",
+                        "attending": ["Minh To", "Hao-tse Wu", "Andrew Li", "Zevin Wang", "Aden Shuttle", "Aida Guang", "Aden Bernadi", "Boteng Jerome", "Big Boy", "Charlie Stone", "Carley Winston", "Chuck Chick", "Emma Stone", "Justin Bieber", "Post Malone", "Lionel Messi", "Chirstiano Ronaldo", "Edison Cavani", "Arianna Grande", "Demi Lovato", "Pink", "Chris Evan", "Chris Hemsworth", "Natasha Reinhart", "Chris Rock", "Will SMith", "Janden Smith", "Emma Watson", "Jennifer Lopec", "Jennifer Aniston", "Bruce Lee", "Jackie Chan", "Amanda Castilo"],
+                        "excused": [],
+                        "absent": []
+                    },
+                    {
+                        "name": "SENG 310 lecture",
+                        "date": "Thu Jun 23, 2022",
+                        "type": "upcoming",
+                        "attending": ["Minh To", "Hao-tse Wu", "Andrew Li", "Zevin Wang", "Aden Shuttle", "Aida Guang", "Aden Bernadi", "Boteng Jerome", "Big Boy", "Charlie Stone", "Carley Winston", "Chuck Chick", "Emma Stone", "Justin Bieber", "Post Malone", "Lionel Messi", "Chirstiano Ronaldo", "Edison Cavani", "Arianna Grande", "Demi Lovato", "Pink", "Chris Evan", "Chris Hemsworth", "Natasha Reinhart", "Chris Rock", "Will SMith", "Janden Smith", "Emma Watson", "Jennifer Lopec", "Jennifer Aniston", "Bruce Lee", "Jackie Chan", "Amanda Castilo"],
+                        "excused": [],
+                        "absent": []
+                    },
+                    {
+                        "name": "SENG 310 lecture",
+                        "date": "Mon Jun 27, 2022",
+                        "type": "upcoming",
+                        "attending": ["Minh To", "Hao-tse Wu", "Andrew Li", "Zevin Wang", "Aden Shuttle", "Aida Guang", "Aden Bernadi", "Boteng Jerome", "Big Boy", "Charlie Stone", "Carley Winston", "Chuck Chick", "Emma Stone", "Justin Bieber", "Post Malone", "Lionel Messi", "Chirstiano Ronaldo", "Edison Cavani", "Arianna Grande", "Demi Lovato", "Pink", "Chris Evan", "Chris Hemsworth", "Natasha Reinhart", "Chris Rock", "Will SMith", "Janden Smith", "Emma Watson", "Jennifer Lopec", "Jennifer Aniston", "Bruce Lee", "Jackie Chan", "Amanda Castilo"],
+                        "excused": [],
+                        "absent": []
+                    },
+                    {
+                        "name": "SENG 310 lecture",
+                        "date": "Thu Jun 30, 2022",
+                        "type": "upcoming",
+                        "attending": ["Minh To", "Hao-tse Wu", "Andrew Li", "Zevin Wang", "Aden Shuttle", "Aida Guang", "Aden Bernadi", "Boteng Jerome", "Big Boy", "Charlie Stone", "Carley Winston", "Chuck Chick", "Emma Stone", "Justin Bieber", "Post Malone", "Lionel Messi", "Chirstiano Ronaldo", "Edison Cavani", "Arianna Grande", "Demi Lovato", "Pink", "Chris Evan", "Chris Hemsworth", "Natasha Reinhart", "Chris Rock", "Will SMith", "Janden Smith", "Emma Watson", "Jennifer Lopec", "Jennifer Aniston", "Bruce Lee", "Jackie Chan", "Amanda Castilo"],
+                        "excused": [],
+                        "absent": []
+                    },
+                    {
+                        "name": "SENG 310 lecture",
+                        "date": "Thu Jun 16, 2022",
+                        "type": "recent",
+                        "attending": ["Aden Bernadi", "Boteng Jerome", "Big Boy", "Charlie Stone", "Carley Winston", "Chuck Chick", "Emma Stone", "Justin Bieber", "Post Malone", "Lionel Messi", "Chirstiano Ronaldo", "Edison Cavani", "Arianna Grande", "Demi Lovato", "Pink", "Chris Evan", "Chris Hemsworth", "Natasha Reinhart", "Chris Rock", "Will SMith", "Janden Smith", "Emma Watson", "Jennifer Lopec", "Jennifer Aniston", "Bruce Lee", "Jackie Chan", "Amanda Castilo"],
+                        "excused": ["Minh To", "Hao-tse Wu"],
+                        "absent": ["Andrew Li", "Zevin Wang", "Aden Shuttle", "Aida Guang"]
+                    },
+                    {
+                        "name": "SENG 310 lecture",
+                        "date": "Mon Jun 13, 2022",
+                        "type": "recent",
+                        "attending": ["Aden Bernadi", "Boteng Jerome", "Big Boy", "Charlie Stone", "Carley Winston", "Chuck Chick", "Emma Stone", "Justin Bieber", "Post Malone", "Lionel Messi", "Chirstiano Ronaldo", "Edison Cavani", "Arianna Grande", "Demi Lovato", "Pink", "Chris Evan", "Chris Hemsworth", "Natasha Reinhart", "Chris Rock", "Will SMith", "Janden Smith", "Emma Watson", "Jennifer Lopec", "Jennifer Aniston", "Bruce Lee", "Jackie Chan", "Amanda Castilo"],
+                        "excused": ["Minh To", "Hao-tse Wu"],
+                        "absent": ["Andrew Li", "Zevin Wang", "Aden Shuttle", "Aida Guang"]
+                    },
+                    {
+                        "name": "SENG 310 lecture",
+                        "date": "Thu Jun 9, 2022",
+                        "type": "recent",
+                        "attending": ["Aden Bernadi", "Boteng Jerome", "Big Boy", "Charlie Stone", "Carley Winston", "Chuck Chick", "Emma Stone", "Justin Bieber", "Post Malone", "Lionel Messi", "Chirstiano Ronaldo", "Edison Cavani", "Arianna Grande", "Demi Lovato", "Pink", "Chris Evan", "Chris Hemsworth", "Natasha Reinhart", "Chris Rock", "Will SMith", "Janden Smith", "Emma Watson", "Jennifer Lopec", "Jennifer Aniston", "Bruce Lee", "Jackie Chan", "Amanda Castilo"],
+                        "excused": ["Minh To", "Hao-tse Wu"],
+                        "absent": ["Andrew Li", "Zevin Wang", "Aden Shuttle", "Aida Guang"]
+                    },
+                    {
+                        "name": "SENG 310 lecture",
+                        "date": "Mon Jun 6, 2022",
+                        "type": "recent",
+                        "attending": ["Aden Bernadi", "Boteng Jerome", "Big Boy", "Charlie Stone", "Carley Winston", "Chuck Chick", "Emma Stone", "Justin Bieber", "Post Malone", "Lionel Messi", "Chirstiano Ronaldo", "Edison Cavani", "Arianna Grande", "Demi Lovato", "Pink", "Chris Evan", "Chris Hemsworth", "Natasha Reinhart", "Chris Rock", "Will SMith", "Janden Smith", "Emma Watson", "Jennifer Lopec", "Jennifer Aniston", "Bruce Lee", "Jackie Chan", "Amanda Castilo"],
+                        "excused": ["Minh To", "Hao-tse Wu"],
+                        "absent": ["Andrew Li", "Zevin Wang", "Aden Shuttle", "Aida Guang"]
+                    }
+                ]
+            },
+            "CSC 482A": {
+                "students": [
+                    "Minh To", "Hao-tse Wu", "Andrew Li", "Zevin Wang"
+                ]
+            },
+            "CSC 485C": {
+                "students": [
+                    "Minh To", "Hao-tse Wu", "Andrew Li", "Zevin Wang"
+                ]
+            },
+            "CSC 445": {
+                "students": [
+                    "Minh To", "Hao-tse Wu", "Andrew Li", "Zevin Wang"
+                ]
+            }
+        }
+    }
+]

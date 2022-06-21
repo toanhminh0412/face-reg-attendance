@@ -23,6 +23,7 @@ function Auth() {
             const userId = res.data.userId;
             if (userId >= 1) {
                 window.localStorage.setItem("FRuserId", userId);
+                window.localStorage.setItem("FRrole", res.data.role);
                 navigate("/")
             } else {
                 setError("Incorrect username or password")

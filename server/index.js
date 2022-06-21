@@ -4,6 +4,7 @@ const express = require("express");
 const cors = require('cors');
 const fs = require('fs');
 const authData = require("./auth.json");
+const userData = require("./userData.json")
 
 const PORT = process.env.PORT || 3001;
 
@@ -27,7 +28,13 @@ app.get("/user-auth", (req, res) => {
         break;
       }
     }
-    res.status(200).send({userId: userId});
+    let userRole = "";
+    for (let i = 0; i < userData.length; i++) {
+      if (userData[i].userId === userId) {
+          userRole = userData[i].role;
+      }
+    }
+    res.status(200).send({userId: userId, role: userRole});
 }) 
 
 // All other GET requests not handled before will return our React app
