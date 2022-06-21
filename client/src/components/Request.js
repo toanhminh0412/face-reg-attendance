@@ -202,9 +202,9 @@ function Request() {
                     <p className="text-md font-light"><span className="font-medium">Absent date:</span> {req.date}</p>
                     <p className="text-md font-light"><span className="font-medium">Reason: </span>{req.reason}</p>
                       <div className="flex flex-row mt-3">
-                        <div className="bg-green-200 rounded-sm hover:bg-green-500 w-4/12 text-black text-lg font-semilight hover:text-black flex flex-col justify-center text-center py-1 h-fit" onClick={() => {acceptRequest(req.id)}}>Accept</div>
-                        <div className="bg-red-200 rounded-sm hover:bg-red-500 w-4/12 text-black text-lg font-semilight hover:text-black flex flex-col justify-center text-center py-1 h-fit" onClick={() => {declineRequest(req.id)}}>Decline</div>
-                        <div className="bg-yellow-200 rounded-sm hover:bg-yellow-500 w-4/12 text-black text-lg font-semilight hover:text-black flex flex-col justify-center text-center py-1 h-fit" onClick={() => {viewRequestDetail(req)}}>Details</div>
+                        <div className="bg-green-200 rounded-sm click:bg-green-500 w-4/12 text-black text-lg font-semilight hover:text-black flex flex-col justify-center text-center py-1 h-fit" onClick={() => {acceptRequest(req.id)}}>Accept</div>
+                        <div className="bg-red-200 rounded-sm click:bg-red-500 w-4/12 text-black text-lg font-semilight hover:text-black flex flex-col justify-center text-center py-1 h-fit" onClick={() => {declineRequest(req.id)}}>Decline</div>
+                        <div className="bg-yellow-200 rounded-sm click:bg-yellow-500 w-4/12 text-black text-lg font-semilight hover:text-black flex flex-col justify-center text-center py-1 h-fit" onClick={() => {viewRequestDetail(req)}}>Details</div>
                       </div>
                   </div>
                 ))}
@@ -241,7 +241,7 @@ function Request() {
           {message !== "" ? (<div className="fixed bottom-20 left-4 px-4 py-2 text-white text-lg font-semibold w-fit h-fit bg-sky-800 shadow-md shadow-slate-300 border-slate-300">{message}</div>): (<div></div>)}
           <div className="bg-indigo-700 hover:bg-indigo-900 rounded-full w-12 h-12 fixed z-20 bottom-20 right-8 text-center text-white font-bold text-3xl flex flex-col justify-center" onClick={() => {setShowAddRequest(true)}}>+</div>
           {showAddRequest ? (<div className="absolute top-0 left-0 bg-black opacity-50 z-20 w-screen h-full"></div>) : (<div></div>)}
-                {showAddRequest? (<form className="fixed top-20 left-0 right-0 mx-auto bg-slate-100 w-10/12 z-30 rounded-md h-fit px-4 py-3 text-lg" onSubmit={submitRequestForm}>
+                {showAddRequest? (<form className="fixed top-20 left-0 right-0 bottom-0 mx-auto bg-slate-100 w-10/12 z-30 rounded-md h-fit px-4 py-3 text-lg overflow-x-scroll overflow-y-scroll" onSubmit={submitRequestForm}>
                     <h1 className="text-2xl font-bold">Request form</h1>
                     {requestMessage !== "" ? (<p className="mt-1 text-red-500">{requestMessage}</p>) : (<div></div>)}
                     <p className="mt-1">Class:</p>
