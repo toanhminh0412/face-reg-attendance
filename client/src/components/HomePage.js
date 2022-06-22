@@ -12,7 +12,7 @@ function HomePage() {
     useEffect(() => {
         setClassName(window.localStorage.getItem("class"));
         const login = window.localStorage.getItem("FRlogin");
-        if (login === "false" || !login) {
+        if (!login || login === "" || login === "false") {
             navigate("/login");
         }
     }, [])
