@@ -10,7 +10,7 @@ function RequestDetail() {
 
     useEffect(() => {
         const login = window.localStorage.getItem("FRlogin");
-        if (login === "false") {
+        if (login === "false" || !login) {
             navigate("/login");
         }
     })
@@ -30,8 +30,8 @@ function RequestDetail() {
                     </div>
                 </div>
                 <div className="flex flex-row w-11/12 h-fit mx-auto mt-4">
-                    <div className="rounded-sm bg-green-500 hover:bg-green-700 w-1/2 text-white text-xl font-semilight flex flex-col justify-center text-center py-2 h-fit">Accept</div>
-                    <div className="rounded-sm bg-red-500 hover:bg-red-700 w-1/2 text-white text-xl font-semilight flex flex-col justify-center text-center py-2 h-fit">Decline</div>
+                    <div className="rounded-sm bg-green-500 hover:bg-green-700 w-1/2 text-white text-xl font-semilight flex flex-col justify-center text-center py-2 h-fit" onClick={() => {navigate("/request")}}>Accept</div>
+                    <div className="rounded-sm bg-red-500 hover:bg-red-700 w-1/2 text-white text-xl font-semilight flex flex-col justify-center text-center py-2 h-fit" onClick={() => {navigate("/request")}}>Decline</div>
                 </div>
                 <LowerNav selected="request"/>
             </div>

@@ -12,7 +12,7 @@ function HomePage() {
     useEffect(() => {
         setClassName(window.localStorage.getItem("class"));
         const login = window.localStorage.getItem("FRlogin");
-        if (login === "false") {
+        if (login === "false" || !login) {
             navigate("/login");
         }
     }, [])
@@ -104,12 +104,12 @@ function HomePage() {
                         <div className="w-11/12 mx-auto mt-4">
                             <h1 className="text-2xl font-bold">Recents</h1>
                             <div className="w-full mt-2">
-                                <div className="w-full px-4 py-2 rounded-md bg-green-200 shadow-md hover:shadow-inner hover:shadow-slate-500 mt-4 relative">
+                                <div className="w-full px-4 py-2 rounded-md bg-green-200 shadow-md mt-4 relative">
                                     <h1 className="text-xl font-semibold">CSC 482A lecture</h1>
                                     <p className="text-md font-light mt-1">Thu Jun 17, 2022</p>
                                     <p className="text-md font-light">Status: Attended</p>
                                 </div>
-                                <div className="w-full px-4 py-2 rounded-md bg-red-200 shadow-md hover:shadow-inner hover:shadow-slate-500 mt-4 relative">
+                                <div className="w-full px-4 py-2 rounded-md bg-red-200 shadow-md mt-4 relative">
                                     <h1 className="text-xl font-semibold">CSC 445 lecture</h1>
                                     <p className="text-md font-light mt-1">Mon Jun 14, 2022</p>
                                     <p className="text-md font-light">Status: Absent</p>

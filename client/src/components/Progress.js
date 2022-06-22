@@ -1,8 +1,18 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import UpperNav from './UpperNav'
 import LowerNav from './LowerNav'
+import {useNavigate} from "react-router-dom";
 
 function Progress() {
+    const navigate = useNavigate();
+
+    useEffect(() => {
+        const login = window.localStorage.getItem("FRlogin");
+        if (login === "false" || !login) {
+            navigate("/login");
+        }
+    }, [])
+
   return (
     <div className="w-screen min-h-screen bg-slate-200 pb-20">
         <UpperNav className="Summary"/>
@@ -10,7 +20,7 @@ function Progress() {
             <div className="w-11/12 mx-auto">
                 <h1 className="text-3xl font-bold">Attendance report</h1>
                 <div className="w-full mt-4">
-                    <div className="w-full px-4 py-2 rounded-md bg-white shadow-md hover:shadow-inner hover:shadow-slate-500">
+                    <div className="w-full px-4 py-2 rounded-md bg-white shadow-md">
                         <h1 className="text-xl font-bold">SENG 310 lecture</h1>
                         <p className="text-md font-semilight mt-1">Total classes: <span className="font-semibold text-lg">32</span></p>
                         <p className="text-md font-semilight">Total past classes: <span className="font-semibold text-lg">15</span></p>
@@ -21,7 +31,7 @@ function Progress() {
                     </div>
                 </div>
                 <div className="w-full mt-4">
-                    <div className="w-full px-4 py-2 rounded-md bg-white shadow-md hover:shadow-inner hover:shadow-slate-500">
+                    <div className="w-full px-4 py-2 rounded-md bg-white shadow-md">
                         <h1 className="text-xl font-bold">CSC 485C lecture</h1>
                         <p className="text-md font-semilight mt-1">Total classes: <span className="font-semibold text-lg">32</span></p>
                         <p className="text-md font-semilight">Total past classes: <span className="font-semibold text-lg">15</span></p>
@@ -32,7 +42,7 @@ function Progress() {
                     </div>
                 </div>
                 <div className="w-full mt-4">
-                    <div className="w-full px-4 py-2 rounded-md bg-white shadow-md hover:shadow-inner hover:shadow-slate-500">
+                    <div className="w-full px-4 py-2 rounded-md bg-white shadow-md">
                         <h1 className="text-xl font-bold">CSC 482A lecture</h1>
                         <p className="text-md font-semilight mt-1">Total classes: <span className="font-semibold text-lg">32</span></p>
                         <p className="text-md font-semilight">Total past classes: <span className="font-semibold text-lg">15</span></p>
@@ -43,7 +53,7 @@ function Progress() {
                     </div>
                 </div>
                 <div className="w-full mt-4">
-                    <div className="w-full px-4 py-2 rounded-md bg-white shadow-md hover:shadow-inner hover:shadow-slate-500">
+                    <div className="w-full px-4 py-2 rounded-md bg-white shadow-md">
                         <h1 className="text-xl font-bold">CSC 445 lecture</h1>
                         <p className="text-md font-semilight mt-1">Total classes: <span className="font-semibold text-lg">32</span></p>
                         <p className="text-md font-semilight">Total past classes: <span className="font-semibold text-lg">15</span></p>

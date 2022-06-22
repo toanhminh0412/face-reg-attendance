@@ -95,7 +95,7 @@ function Request() {
 
   useEffect(() => {
     const login = window.localStorage.getItem("FRlogin");
-    if (login === "false") {
+    if (login === "false" || !login) {
         navigate("/login");
     }
 })

@@ -1,2 +1,0 @@
-1. Add Search bar for Recent class and Upcoming class details
-2. Add navigation to request button

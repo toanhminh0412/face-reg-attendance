@@ -9,14 +9,20 @@ function RecentClassDetail() {
     const [date, setDate] = useState(window.localStorage.getItem("PRclassdate"))
     const [attendingNum, setAttendingNum] = useState(window.localStorage.getItem("PRattendingnum")); 
     const [attendees, setAtendess] = useState(["Minh To","Aden Bernadi","Big Boy","Carley Winston","Chuck Chick","Emma Stone","Justin Bieber","Post Malone","Lionel Messi","Chirstiano Ronaldo","Edison Cavani","Arianna Grande","Demi Lovato","Pink","Chris Evan","Chris Hemsworth","Natasha Reinhart","Chris Rock","Will SMith","Janden Smith","Emma Watson","Jennifer Lopec","Jennifer Aniston","Bruce Lee","Jackie Chan","Amanda Castilo","Zevin Wang","Charlie Stone","Andrew Li","Boteng Jerome"]);
+    const [showAttendees, setShowAttendees] = useState(["Minh To","Aden Bernadi","Big Boy","Carley Winston","Chuck Chick","Emma Stone","Justin Bieber","Post Malone","Lionel Messi","Chirstiano Ronaldo","Edison Cavani","Arianna Grande","Demi Lovato","Pink","Chris Evan","Chris Hemsworth","Natasha Reinhart","Chris Rock","Will SMith","Janden Smith","Emma Watson","Jennifer Lopec","Jennifer Aniston","Bruce Lee","Jackie Chan","Amanda Castilo","Zevin Wang","Charlie Stone","Andrew Li","Boteng Jerome"])
+    const [searchAttendee, setSearchAttendee] = useState("");
     const [excuseds, setExcuseds] = useState(["Hao-tse Wu","Aida Guang","Aden Shuttle"]);
+    const [showExcuseds, setShowExcuseds] = useState(["Hao-tse Wu","Aida Guang","Aden Shuttle"]);
+    const [searchExcused, setSearchExcused] = useState("");
     const [absents, setAbsents] = useState(["Thor", "Iron Man", "Captain America", "Black Widow", "Hulk", "Thanos", "Captain Marvel", "Nick Fury", "Gamora", "I am Groot", "Dr Strange", "Spider Man", "Hawkeye", "Scarlet Witch", "Vision", "Quick SIlver"]);
+    const [showAbsents, setShowAbsents] = useState(["Thor", "Iron Man", "Captain America", "Black Widow", "Hulk", "Thanos", "Captain Marvel", "Nick Fury", "Gamora", "I am Groot", "Dr Strange", "Spider Man", "Hawkeye", "Scarlet Witch", "Vision", "Quick SIlver"])
+    const [searchAbsent, setSearchAbsent] = useState("");
     const [viewOption, setViewOption] = useState("allstudents");
     const navigate = useNavigate();
 
     useEffect(() => {
         const login = window.localStorage.getItem("FRlogin");
-        if (login === "false") {
+        if (login === "false" || !login) {
             navigate("/login");
         }
     })
@@ -26,8 +32,50 @@ function RecentClassDetail() {
         // console.log("Typ")
     }, [excuseds])
 
+    useEffect(() => {
+        let includes = [];
+        for (let i = 0; i < excuseds.length; i++) {
+            if (excuseds[i].toLowerCase().includes(searchExcused.toLowerCase())) {
+                includes.push(excuseds[i]);
+            }
+        }
+        setShowExcuseds(includes);
+    }, [searchExcused])
+
+    useEffect(() => {
+        let includes = [];
+        for (let i = 0; i < attendees.length; i++) {
+            if (attendees[i].toLowerCase().includes(searchAttendee.toLowerCase())) {
+                includes.push(attendees[i]);
+            }
+        }
+        setShowAttendees(includes);
+    }, [searchAttendee])
+
+    useEffect(() => {
+        let includes = [];
+        for (let i = 0; i < absents.length; i++) {
+            if (absents[i].toLowerCase().includes(searchAbsent.toLowerCase())) {
+                includes.push(absents[i]);
+            }
+        }
+        setShowAbsents(includes);
+    }, [searchAbsent])
+
     const onViewOptionChange = e => {
         setViewOption(e.target.value);
+    }
+
+    const searchExcusedName = e => {
+        setSearchExcused(e.target.value);
+    }
+
+    const searchAttendeeName = e => {
+        setSearchAttendee(e.target.value);
+    }
+
+    const searchAbsentName = e => {
+        setSearchAbsent(e.target.value);
     }
 
     return (
@@ -48,8 +96,14 @@ function RecentClassDetail() {
                     {viewOption === "allstudents" || viewOption === "excused" ? 
                     (<div className="w-full mt-8">
                         <h1 className="underline text-2xl font-bold">Excused (Number: {excuseds.length})</h1>
+                        {excuseds.length === 0 ? (<div></div>) : (
+                            <div className="mt-2 mb-4">
+                            <p>Search:</p>
+                            <input className="w-full h-fit bg-white px-4 py-2 bg-white shadow-md" type="text" placeholder="Search for student name" onChange={searchExcusedName}></input>
+                            </div>
+                        )}
                         {excuseds.length !== 0 ? (<div className="w-full mt-2">
-                            {excuseds.map((student, index) => 
+                            {showExcuseds.map((student, index) => 
                                 (<div className="flex flex-row px-4 py-2 w-full h-fit rounded-md mt-2 bg-white shadow-md bg-yellow-200" key={index}>
                                     <p className="text-lg font-semilight w-11/12">{student}</p>
                                 </div>)
@@ -65,8 +119,14 @@ function RecentClassDetail() {
                     {viewOption === "allstudents" || viewOption === "absent" ? 
                     (<div className="w-full mt-8">
                         <h1 className="underline text-2xl font-bold">Absent (Number: {175 - attendingNum - excuseds.length})</h1>
+                        {absents.length === 0 ? (<div></div>) : (
+                            <div className="mt-2 mb-4">
+                            <p>Search:</p>
+                            <input className="w-full h-fit bg-white px-4 py-2 bg-white shadow-md" type="text" placeholder="Search for student name" onChange={searchAbsentName}></input>
+                            </div>
+                        )}
                         {absents.length !== 0 ? (<div className="w-full mt-2">
-                            {absents.map((student, index) => 
+                            {showAbsents.map((student, index) => 
                                 (<div className="flex flex-row px-4 py-2 w-full h-fit rounded-md mt-2 bg-white shadow-md bg-red-200" key={index}>
                                     <p className="text-lg font-semilight w-11/12">{student}</p>
                                 </div>)
@@ -82,8 +142,14 @@ function RecentClassDetail() {
                     {viewOption === "allstudents" || viewOption === "attended" ?
                     (<div className="w-full mt-8">
                         <h1 className="underline text-2xl font-bold">Attendees (Number: {attendingNum})</h1>
+                        {attendees.length === 0 ? (<div></div>) : (
+                            <div className="mt-2 mb-4">
+                            <p>Search:</p>
+                            <input className="w-full h-fit bg-white px-4 py-2 bg-white shadow-md" type="text" placeholder="Search for student name" onChange={searchAttendeeName}></input>
+                            </div>
+                        )}
                         {attendees.length !== 0 ? (<div className="w-full mt-4 mx-auto">
-                            {attendees.map((student, index) => 
+                            {showAttendees.map((student, index) => 
                                 (<div className="flex flex-row px-4 py-2 w-full h-fit rounded-md mt-2 bg-white shadow-md bg-green-200" key={index}>
                                     <p className="text-lg font-semilight w-11/12">{student}</p>
                                 </div>)

@@ -15,7 +15,7 @@ function Schedule() {
 
     useEffect(() => {
         const login = window.localStorage.getItem("FRlogin");
-        if (login === "false") {
+        if (login === "false" || !login) {
             navigate("/login");
         }
     })
@@ -80,12 +80,12 @@ function Schedule() {
                 <UpperNav className="Schedule"/>
                 <div className="pt-20 w-full">
                     <div className="flex flex-row bg-white border border-slate-300 shadow-md shadow-slate-300 h-fit">
-                        <div className="w-2/12 font-semibold text-black bg-slate-200 hover:bg-slate-300 text-2xl text-center py-3" onClick={moveLeft}>&#60;</div>
+                        <div className="w-2/12 font-semibold text-black bg-slate-200 active:bg-slate-300 text-2xl text-center py-3" onClick={moveLeft}>&#60;</div>
                         <div className="w-8/12 font-semibold text-black text-2xl text-center py-3">{month[0]} 2022</div>
-                        <div className="w-2/12 font-semibold text-black bg-slate-200 hover:bg-slate-300 text-2xl text-center py-3" onClick={moveRight}>&#62;</div>
+                        <div className="w-2/12 font-semibold text-black bg-slate-200 active:bg-slate-300 text-2xl text-center py-3" onClick={moveRight}>&#62;</div>
                     </div>
                     <p className="text-md italic mt-4 w-10/12 mx-auto">Underlined and bold dates are ones when you have one or more classes</p>
-                    <div className="mt-2 w-full flex flex-row flex-wrap justify-center">
+                    <div className="mt-2 w-full flex flex-row flex-wrap justify-center active:bg-slate-300">
                         {Array(month[1]).fill(0).map((x, index) => (
                             (index + 1) % 7 === 6 || (index + 1) % 7 === 2 ? (<div key={index + 1} className="w-1/6 mr-1 mt-1 py-4 text-center bg-white hover:bg-slate-200 text-lg font-bold underline rounded-sm" onClick={() => {onDateClickedStudent(index + 1)}}>{index + 1}</div>) : (<div key={index + 1} className="w-1/6 mr-1 mt-1 py-4 text-center bg-white hover:bg-slate-200 text-lg font-semilight rounded-sm" onClick={() => {onDateClicked(index + 1)}}>{index + 1}</div>)
                         ))}
@@ -116,12 +116,12 @@ function Schedule() {
                 <UpperNav className="Schedule"/>
                 <div className="pt-20 w-full">
                     <div className="flex flex-row bg-white border border-slate-300 shadow-md shadow-slate-300 h-fit">
-                        <div className="w-2/12 font-semibold text-black bg-slate-200 hover:bg-slate-300 text-2xl text-center py-3" onClick={moveLeft}>&#60;</div>
+                        <div className="w-2/12 font-semibold text-black bg-slate-200 active:bg-slate-300 text-2xl text-center py-3" onClick={moveLeft}>&#60;</div>
                         <div className="w-8/12 font-semibold text-black text-2xl text-center py-3">{month[0]} 2022</div>
-                        <div className="w-2/12 font-semibold text-black bg-slate-200 hover:bg-slate-300 text-2xl text-center py-3" onClick={moveRight}>&#62;</div>
+                        <div className="w-2/12 font-semibold text-black bg-slate-200 active:bg-slate-300 text-2xl text-center py-3" onClick={moveRight}>&#62;</div>
                     </div>
                     <p className="text-md italic mt-4 w-10/12 mx-auto">Underlined and bold dates are ones when you have one or more classes</p>
-                    <div className="mt-2 w-full flex flex-row flex-wrap justify-center">
+                    <div className="mt-2 w-full flex flex-row flex-wrap justify-center active:bg-slate-300">
                         {Array(month[1]).fill(0).map((x, index) => (
                             (index + 1) % 7 === 6 || (index + 1) % 7 === 2 ? (<div key={index + 1} className="w-1/6 mr-1 mt-1 py-4 text-center bg-white hover:bg-slate-200 text-lg font-bold underline rounded-sm" onClick={() => {onDateClicked(index + 1)}}>{index + 1}</div>) : (<div key={index + 1} className="w-1/6 mr-1 mt-1 py-4 text-center bg-white hover:bg-slate-200 text-lg font-semilight rounded-sm" onClick={() => {onDateClicked(index + 1)}}>{index + 1}</div>)
                         ))}
