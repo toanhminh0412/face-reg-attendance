@@ -174,7 +174,7 @@ function UpcomingClassDetail() {
                         <h1 className="text-2xl font-semibold mt-2">Status: {status === "attending" ? (<span className="text-green-500">{status}</span>) : (<span className="text-yellow-500">{status}</span>)}</h1>
                         <h1 className="text-2xl font-semibold mt-2">Professor: Archie To</h1>
                     </div>
-                    <div className="w-11/12 text-2xl py-2 bg-sky-700 active:bg-sky-900 hover:shadow-inner active:shadow-sky-900 text-white text-center rounded-md mx-auto">{status === "attending" ? <span onClick={() => {navigate("/request")}}>Send request</span> : "Mark as attending"}</div>
+                    <div className="w-11/12 text-2xl py-2 bg-sky-700 active:bg-sky-900 hover:shadow-inner active:shadow-sky-900 text-white text-center rounded-md mx-auto" onClick={() => {navigate("/request")}}>{status === "attending" ? <span>Send request</span> : "Mark as attending"}</div>
                 </div>
                 <LowerNav selected="schedule"/>
             </div>

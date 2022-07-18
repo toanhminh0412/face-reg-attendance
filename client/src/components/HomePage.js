@@ -42,8 +42,9 @@ function HomePage() {
                 <UpperNav className={className}/>
                     <div className="pt-20 w-full">
                         <div className="w-11/12 mx-auto">
-                            <h1 className="text-2xl font-bold">Upcomings</h1>
-                            <div className="w-full mt-2">
+                            <h1 className="text-2xl font-bold">Today: Mon Jun 20 2022</h1>
+                            <h1 className="text-2xl font-bold mt-2">Upcomings</h1>
+                            <div className="w-full mt-2"> 
                                 <div className="w-full px-4 py-2 rounded-md bg-white shadow-md hover:shadow-inner hover:shadow-slate-500 mt-4 relative" onClick={() => {viewUpcomingDetails("Mon Jun 20, 2022", 175)}}>
                                     <h1 className="text-xl font-semibold">{className} lecture</h1>
                                     <p className="text-md font-light mt-1">Mon Jun 20, 2022</p>
@@ -85,7 +86,8 @@ function HomePage() {
                 <UpperNav className="Homepage"/>
                     <div className="pt-20 w-full">
                         <div className="w-11/12 mx-auto">
-                            <h1 className="text-2xl font-bold">Upcomings</h1>
+                            <h1 className="text-2xl font-bold">Today: Mon Jun 20 2022</h1>
+                            <h1 className="text-2xl font-bold mt-2">Upcomings</h1>
                             <div className="w-full mt-2">
                                 <div className="w-full px-4 py-2 rounded-md bg-white shadow-md hover:shadow-inner hover:shadow-slate-500 mt-4 relative" onClick={() => {viewUpcomingDetailsStudent("Mon Jun 20, 2022", "attending", "SENG 310")}}>
                                     <h1 className="text-xl font-semibold">SENG 310 lecture</h1>
